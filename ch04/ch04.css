@@ -1,0 +1,30 @@
+#images-view .thumb{
+	background: #dddddd;
+	padding: 3px;
+}
+
+#images-view .thumb img{
+	height: 60px;
+	width: 80px;
+}
+
+#images-view .thumb-wrap{
+	float: left;
+	margin: 4px;
+	margin-right: 0;
+	padding: 5px;
+}
+
+#images-view .thumb-wrap span{
+	display: block;
+	overflow: hidden;
+	text-align: center;
+}
+
+#images-view .x-item-selected .thumb-wrap{
+	background:#64C6FF;
+}
+
+#detail-panel img{
+    width: 100%;
+}

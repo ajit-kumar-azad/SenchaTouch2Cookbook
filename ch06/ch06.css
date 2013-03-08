@@ -1,0 +1,19 @@
+.contact {
+	padding-left: 10px;
+}
+
+.tab1 {
+	background-color: #E58A99;
+}
+
+.tab2 {
+	background-color: #65B9E0;
+}
+
+.tab3 {
+	background-color: #B7E488;
+}
+
+.cancel-icon {
+	background: url(images/cancel.png) no-repeat;
+}
