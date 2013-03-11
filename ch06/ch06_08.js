@@ -1,10 +1,10 @@
 Ext.application({
     launch: function() {
-var picker = Ext.create('Ext.Picker', {
-	enter: 'top',
-	enterAnimation: 'fade',
-	exit: 'top',
-	exitAnimation: 'flip',
+var picker = Ext.create('Ext.picker.Picker', {
+//	enter: 'top',
+//	exit: 'top',
+//	showAnimation: 'fadeIn',
+//	hideAnimation: 'fadeOut',
 //	useTitles: true,
 //	cancelButton: false,
 //	doneButton: "I'm Done!",
@@ -13,9 +13,18 @@ var picker = Ext.create('Ext.Picker', {
 //			text: 'Reset'
 //		}]
 //	},
-    slots: [
-        {
-//        		title: 'Choose color',
+    slots: [{
+			title: 'Choose flower',
+	        name : 'flower',
+	//        align: 'right',
+	        data : [
+	            {text: 'Rose', value: 'rose'},
+	            {text: 'Hibiscus', value: 'hibiscus'},
+	            {text: 'Daffodil', value: 'daffodil'},
+	            {text: 'Daisy', value: 'daisy'}
+	        ]
+	    }, {
+        		title: 'Choose color',
             name : 'color',
 //            align: 'right',
             data : [
@@ -24,11 +33,10 @@ var picker = Ext.create('Ext.Picker', {
                 {text: 'Yellow', value: 'yellow'},
                 {text: 'White', value: 'white'}
             ]
-        }
-    ],
+        }],
             listeners: {
             	pick: function(picker, pickedObj, slot) {
-            		Ext.Msg.alert('Info', 'Value picked is: ' + pickedObj.color);
+            		Ext.Msg.alert('Info', 'Value picked is: ' + pickedObj.flower + ' : ' + pickedObj.color);
             	}
             }
 });

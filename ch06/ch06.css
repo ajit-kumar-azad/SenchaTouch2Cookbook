@@ -14,6 +14,21 @@
 	background-color: #B7E488;
 }
 
+.first-line {
+    font-size: 2.1em;
+    text-shadow: 0px 2px 0px rgba(255,255,255,.5);
+}
+
+.second-line {
+    font-size: 0.6em;
+    color:#555;
+}
+
 .cancel-icon {
-	background: url(images/cancel.png) no-repeat;
+	background: url(images/delete.png) no-repeat;
+}
+
+.x-hasbadge .x-badge {
+    -webkit-border-radius: 1.2em;
+    border-radius: 1.2em;
 }

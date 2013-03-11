@@ -1,124 +1,94 @@
 Touch.book.ux.PhotoAlbum.prototype.loadData = function(data) {
- 	this.store.loadData(data);
+ 	this.getStore().setData(data);
 };
 
-Ext.setup({
-    onReady: function() {
+Ext.application({
+	name: 'MyApp',
+	
+    launch: function() {
         
-    var data = [{
-				album:'rose',
-				url:'http://www.pictures.vg/vgflowers/400x300/flowers_pics_4870.jpg',
-				title:'Rose 1',
-				about:'Peach'}, {
-				album:'rose',
-				url:'http://www.pictures.vg/vgflowers/400x300/redroses08.jpg',
-				title:'Rose 2',
-				about:'Red'}, {
-				album:'rose',
-				url:'http://www.pictures.vg/vgflowers/400x300/abflowers5613.jpg',
-				title:'Rose 3',
-				about:'Pink'}, {
-				album:'rose',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers0399.jpg',
-				title:'Rose 4',
-				about:'Orange'}, {
-				album:'daffodil',
-				url:'http://www.pictures.vg/vgflowers/400x300/daff001.jpg',
-				title:'Daffodil 1',
-				about:'Yellow'}, {
-				album:'daffodil',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers0484.jpg',
-				title:'Daffodil 2',
-				about:'Small'}, {
-				album:'daffodil',
-				url:'http://www.pictures.vg/vgflowers/400x300/abflowers2232.jpg',
-				title:'Daffodil 2',
-				about:'Orange'}, {
-				album:'daffodil',
-				url:'http://www.pictures.vg/vgflowers/400x300/abflowers7230.jpg',
-				title:'Daffodil 2',
-				about:'Winter'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers4214.jpg',
-				title:'Hibiscus 1',
-				about:'Peach'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers3250.jpg',
-				title:'Hibiscus 1',
-				about:'Red'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers2631.jpg',
-				title:'Hibiscus 1',
-				about:'Pink'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers5645.jpg',
-				title:'Hibiscus 1',
-				about:'Maroon'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers0577.jpg',
-				title:'Hibiscus 1',
-				about:'Pink'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers3224.jpg',
-				title:'Hibiscus 1',
-				about:'Bright Red'}];
-
-    var newData = [{
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers4214.jpg',
-				title:'Hibiscus 1',
-				about:'Peach'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers3250.jpg',
-				title:'Hibiscus 1',
-				about:'Red'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers2631.jpg',
-				title:'Hibiscus 1',
-				about:'Pink'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers5645.jpg',
-				title:'Hibiscus 1',
-				about:'Maroon'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers0577.jpg',
-				title:'Hibiscus 1',
-				about:'Pink'}, {
-				album:'hibiscus',
-				url:'http://www.pictures.vg/vgflowers/400x300/cflowers3224.jpg',
-				title:'Hibiscus 1',
-				about:'Bright Red'}];				
-	var store = new Ext.data.JsonStore({
-	    mode: 'local',
-	    fields: [
-	        'url', 'title','about'
-	    ]
+    	var data = [{
+			album:'rose',
+			url:'http://images.flowers.vg/250x300/rdroses01.jpg',
+			title:'Rose 1',
+			about:'Peach'}, {
+			album:'rose',
+			url:'http://images.flowers.vg/250x300/roses-maroon3.jpg',
+			title:'Rose 2',
+			about:'Red'}, {
+			album:'rose',
+			url:'http://images.flowers.vg/250x300/roses-dark-pink.jpg',
+			title:'Rose 3',
+			about:'Pink'}, {
+			album:'rose',
+			url:'http://images.flowers.vg/250x300/roses-bright-orange.jpg',
+			title:'Rose 4',
+			about:'Orange'}, {
+			album:'daffodil',
+			url:'http://images.flowers.vg/250x300/daffodil.jpg',
+			title:'Daffodil 1',
+			about:'Yellow'}, {
+			album:'daffodil',
+			url:'http://images.flowers.vg/250x300/daffodil-yellow.jpg',
+			title:'Daffodil 2',
+			about:'Small'}, {
+			album:'daffodil',
+			url:'http://images.flowers.vg/250x300/daffodil-white-orange.jpg',
+			title:'Daffodil 2',
+			about:'Orange'}, {
+			album:'daffodil',
+			url:'http://images.flowers.vg/250x300/winter_flowers_daffodil_white.jpg',
+			title:'Daffodil 2',
+			about:'Winter'}];
+    	
+    	var newData = [{
+			album:'hibiscus',
+			url:'http://images.flowers.vg/250x300/hibiscus-peach.jpg',
+			title:'Hibiscus 1',
+			about:'Peach'}, {
+			album:'hibiscus',
+			url:'http://images.flowers.vg/250x300/hibiscusred.jpg',
+			title:'Hibiscus 1',
+			about:'Red'}, {
+			album:'hibiscus',
+			url:'http://images.flowers.vg/250x300/hibiscus-pink-pink.jpg',
+			title:'Hibiscus 1',
+			about:'Pink'}, {
+			album:'hibiscus',
+			url:'http://images.flowers.vg/250x300/hibiscus-red-maroon.jpg',
+			title:'Hibiscus 1',
+			about:'Maroon'}, {
+			album:'hibiscus',
+			url:'http://images.flowers.vg/250x300/hibiscus-pink-pink.jpg',
+			title:'Hibiscus 1',
+			about:'Pink'}, {
+			album:'hibiscus',
+			url:'http://images.flowers.vg/250x300/hibiscus-red-bright.jpg',
+			title:'Hibiscus 1',
+			about:'Bright Red'}];
+				
+    	var store = Ext.create('Ext.data.Store', {
+		    data: data,
+		    fields: [
+		        'url', 'title','about', 'album'
+		    ]
 	});
+    	
+    	var photoPnl = Ext.create('Touch.book.ux.PhotoAlbum', {
+    		id: 'images-view',
+    		fullscreen: true,
+    		store: store,
+    		items: [{
+    	    	xtype: 'toolbar',
+    	    	docked: 'top',
+    	    	items:[{
+    	    			text: 'Load New Data',
+    					handler: function() {
+    						photoPnl.loadData(newData);
+    					}
+    	    		}]
+    	    }]
+    	});
 	
-	var photoPnl = new Touch.book.ux.PhotoAlbum({
-	    	data: data,
-	    	store: store
-	    });
-	
-	var pnl = new Ext.Panel({
-		id:'images-view',
-	    fullscreen: true,
-	    scroll: false,
-    	monitorOrientation: true,
-	    defaults: {
-	        border: false
-	    },
-	    items: [photoPnl],
-	    dockedItems: [{
-	    	xtype: 'toolbar',
-	    	dock: 'top',
-	    	items:[{
-	    			text: 'Load New Data',
-					handler: function() {
-						photoPnl.loadData(newData);
-					}
-	    	}]
-	    }]
-	});
     }
 });

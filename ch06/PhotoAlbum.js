@@ -13,20 +13,6 @@ Ext.define('Touch.book.ux.PhotoAlbum', {
 	    emptyText: 'No images to display'
 	},
 	
-//	initConfig:function(config){
-//		Ext.apply(this.initialConfig,{
-//			listeners: {
-//				selectionchange: function(dv, recs) {
-//						
-//					if (recs.length > 0) {
-//		        			Ext.Msg.alert('Info', 'Selected: ' + recs[0].data.album + ' : ' + recs[0].data.about);
-//			        }
-//				}
-//			}
-//		});
-//		this.callParent(arguments);
-//	},
-	
 	initialize: function() {
 		this.callParent(arguments);
 		

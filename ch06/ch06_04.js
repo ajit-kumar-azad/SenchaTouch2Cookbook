@@ -13,6 +13,8 @@ Ext.application({
 var store = Ext.create('Ext.data.Store', {
     model  : 'MyApp.model.Contact',
 //    sorters: 'firstName',
+//    sorters: [{property: 'firstName', direction: 'ASC'},
+//    		  {property: 'lastName', direction: 'DESC'}],
 
     data: [
         {firstName: 'Ajit',   lastName: 'Kumar'},

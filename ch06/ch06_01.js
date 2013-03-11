@@ -5,10 +5,13 @@ Ext.application({
     
 		var buttons = [
 		    {
-		        text: 'Normal',
-		        //icon: 'ch06/cancel.png',
-		        iconCls: 'cancel-icon',
-		        iconAlign: 'right',
+		        //text: 'Normal',
+		        //icon: 'ch06/delete.png',
+		        //iconCls: 'cancel-icon',
+		        //iconAlign: 'right',
+                //iconCls: 'delete',
+                //iconMask: true,
+                html: '<span class="first-line">Normal</span><p></p><span class="second-line">This is a normal button with Html</span>',
 		        handler: function() {
 		        	Ext.Msg.alert('Info', 'You have clicked: ' + this.text);
 		        }
@@ -16,8 +19,7 @@ Ext.application({
 		    {
 		        ui  : 'round',
 		        text: 'Round',
-		        badgeText: 'New',
-		        badgeCls: 'x-badge'
+		        badgeText: 'New'
 		    },
 		    {
 		        ui  : 'small',

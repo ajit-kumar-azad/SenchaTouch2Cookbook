@@ -1,9 +1,11 @@
-Ext.override(Touch.book.ux.PhotoAlbum, {
+Ext.define('Touch.book.ux.PhotoAlbumOverride', {
+	override: 'Touch.book.ux.PhotoAlbum',
+	
 	loadData : function(data) {
-		if (this.store.getCount() > 0) {
+		if (this.getStore().getCount() > 0) {
 			Ext.Msg.alert('Info', 'The view is already loaded with data. No action will be performed.');
 		} else {
- 			this.store.loadData(data);
+ 			this.getStore().setData(data);
  		}
  	}
 });

@@ -1,12 +1,12 @@
 Ext.application({
     launch: function() {
 	var myToolbar = Ext.create('Ext.Toolbar', {
-	    //dock : 'left',
+//	    docked : 'left',
 //	    title: 'My Toolbar',
 	    items: [
-//                {
-//                	xtype: 'selectfield'
-//                },
+                {
+                	xtype: 'searchfield'
+                },
                 {
                     text: 'Rose'
                 },

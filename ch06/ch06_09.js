@@ -4,6 +4,10 @@ Ext.application({
     launch: function() {
 	var segmentedButton = Ext.create('Ext.SegmentedButton', {
 //	    allowMultiple: true,
+		layout: {
+			type: 'hbox',
+			pack: 'middle'
+		},
 	    items: [
 	        {
 	            text: 'Album'

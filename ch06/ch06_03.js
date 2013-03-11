@@ -125,7 +125,8 @@ Ext.application({
 		    '<div class="x-clear"></div>');
 
 	var carousel = Ext.create('Ext.carousel.Carousel', {
-		direction: 'vertical',
+		//direction: 'vertical',
+        //indicator: false,
 	    items: [{
 	            id: 'detail-panel',
 	            styleHtmlContent: true,

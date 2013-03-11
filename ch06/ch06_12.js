@@ -67,16 +67,12 @@ Ext.application({
 		        'url', 'title','about', 'album'
 		    ]
 	});
-	
-	var photoPnl = Ext.create('Touch.book.ux.PhotoAlbum', {
-	    	store: store
-	    });
-	
-	var pnl = Ext.create('Ext.Panel', {
-		id:'images-view',
-	    fullscreen: true,
-	    items: [photoPnl]
-	});
+    	
+    	Ext.create('Touch.book.ux.PhotoAlbum', {
+    		id: 'images-view',
+    		fullscreen: true,
+    		store: store
+    	});
 	
     }
 });

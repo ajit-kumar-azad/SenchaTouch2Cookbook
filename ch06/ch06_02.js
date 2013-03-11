@@ -8,9 +8,12 @@ Ext.application({
   	var actionSheet = Ext.create('Ext.ActionSheet', {
   		hidden: true,
   		width: 150,
-  		height: '100%',
+  		top: 0,
   		enter: 'left',
-  		enterAnimation: 'fade',
+  		showAnimation: 'fadeIn',
+  		hideAnimation: 'fadeOut',
+		exit : 'left',
+		hideOnMaskTap : true,
 	    items: [
 	        {
 	            text: 'Cancel',
