@@ -1,0 +1,132 @@
+Ext.setup({
+    onReady: function() {
+
+ 	Ext.regModel('User', {
+	    fields: [
+	        {name: 'name',  type: 'string'},
+	        {name: 'age',   type: 'int'},
+	        {name: 'phone', type: 'string'},
+	        {name: 'email', type: 'string'},
+	        {name: 'alive', type: 'boolean', defaultValue: true}
+	    ],
+	
+	    changeName: function() {
+	        var oldName = this.get('name'),
+	            newName = oldName + " Azad";
+	
+	        this.set('name', newName);
+	    }
+	});
+	
+	var user = Ext.ModelMgr.create({
+	    name : 'Ajit Kumar',
+	    age  : 24,
+	    phone: '555-555-5555',
+	    email: 'ajit.kumar@walkingtree.in'
+	}, 'User');
+	
+	user.changeName();    
+ 
+    var form;
+
+    var formBase = {
+        scroll: 'vertical',
+        items: [{
+                xtype: 'fieldset',
+                title: 'Personal Info',
+                instructions: 'Please enter the information above.',
+                defaults: {
+                    required: true,
+                    labelAlign: 'left',
+                    labelWidth: '40%'
+                },
+                items: [
+                {
+                    xtype: 'textfield',
+                    name : 'name',
+                    label: 'Name',
+                    useClearIcon: true,
+                    autoCapitalize : false
+                }, {
+                    xtype: 'numberfield',
+                    name : 'age',
+                    label: 'Age',
+                    useClearIcon: false
+                }, {
+                    xtype: 'textfield',
+                    name : 'phone',
+                    label: 'Phone',
+                    useClearIcon: true
+                }, {
+                    xtype: 'emailfield',
+                    name : 'email',
+                    label: 'Email',
+                    placeHolder: 'you@sencha.com',
+                    useClearIcon: true
+                }, {
+                    xtype: 'checkboxfield',
+                    name : 'alive',
+                    label: 'Is Alive',
+                    useClearIcon: true
+                }]
+            }
+        ],
+        listeners : {
+            submit : function(form, result){
+                console.log('success', Ext.toArray(arguments));
+            },
+            exception : function(form, result){
+                console.log('failure', Ext.toArray(arguments));
+            }
+        },
+    
+        dockedItems: [
+            {
+                xtype: 'toolbar',
+                dock: 'bottom',
+                items: [
+                	{
+                        text: 'Load',
+                        handler: function() {
+                            form.loadRecord(user);
+                        }
+                    },
+                    {
+                        text: 'Reset',
+                        ui: 'decline',
+                        handler: function() {
+                            form.reset();
+                        }
+                    },
+                    {
+                        text: 'Save',
+                        ui: 'confirm',
+                        handler: function() {
+                        	Ext.Msg.alert("INFO", "In real implementation, this will be saved!");
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+    
+    if (Ext.is.Phone) {
+        formBase.fullscreen = true;
+    } else {
+        Ext.apply(formBase, {
+            autoRender: true,
+            floating: true,
+            modal: true,
+            centered: true,
+            hideOnMaskTap: false,
+            height: 385,
+            width: 480
+        });
+    }
+    
+    form = new Ext.form.FormPanel(formBase);
+    //form.loadRecord(user);		//reset will restore these values
+    form.show();
+    //form.loadRecord(user);		//reset will not restore these values
+    }
+});

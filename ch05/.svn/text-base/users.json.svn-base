@@ -1,0 +1,23 @@
+{
+"totalRecords" : "20",
+"success" : "true",
+"users": [{
+		"id": "1",
+	    "name" : "Ajit Kumar",
+	    "age"  : "32",
+	    "phone": "555-555-5555",
+	    "email": "ajit@walkingtree.in"
+	}, {
+		"id": "2",
+	    "name" : "Alok Ranjan",
+	    "age"  : "32",
+	    "phone": "123-456-7890",
+	    "email": "alok@walkingtree.in"
+	}, {
+		"id": "3",
+	    "name" : "Pradeep Lavania",
+	    "age"  : "34",
+	    "phone": "987-654-3210",
+	    "email": "pradeep@walkingtree.in"
+	}]
+}

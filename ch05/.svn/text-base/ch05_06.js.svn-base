@@ -1,0 +1,36 @@
+Ext.setup({
+    onReady: function() {
+
+ 	Ext.regModel('User', {
+	    fields: [
+	        {name: 'name',  type: 'string'},
+	        {name: 'age',   type: 'int'},
+	        {name: 'phone', type: 'string'},
+	        {name: 'email', type: 'string'},
+	        {name: 'alive', type: 'boolean', defaultValue: true}
+	    ],
+	    validations: [
+	        {type: 'presence',  field: 'age'},
+	        {type: 'length',    field: 'name',     min: 2}
+	        //{type: 'inclusion', field: 'gender',   list: ['Male', 'Female']},
+	        //{type: 'exclusion', field: 'username', list: ['Admin', 'Operator']},
+	        //{type: 'format',    field: 'username', matcher: /([a-z]+)[0-9]{2,3}/}
+	    ]
+	});
+	
+	var user = Ext.ModelMgr.create({
+	    name : '',
+	    phone: '555-555-5555',
+	    email: 'ajit.kumar@walkingtree.in'
+	}, 'User');
+	
+	var errors = user.validate();
+	if (!errors.isValid()) {
+		var errStr = '';
+		Ext.each(errors.items, function(error, index, allErrors){
+			errStr += error.field + ' : ' + error.message + '\n';
+		});
+		alert(errStr);
+	}
+	}
+});
