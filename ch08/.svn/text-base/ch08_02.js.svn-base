@@ -1,0 +1,135 @@
+Ext.setup({
+    onReady: function() {
+    
+    var orderList, onlineStore, offlineStore;
+
+ 	Ext.regModel('OrderLine', {
+	    fields: ['id', 'product', 'description', 'orderedQty', 'uom', 'price']
+	});
+
+ 	Ext.regModel('Order', {
+	    fields: [
+	    	'id',
+	        {name: 'orderNbr',  type: 'int', mapping: 'documentNo'},
+	        {name: 'description',   type: 'string'},
+	        {name: 'dateOrdered', type: 'string'},
+	        {name: 'customer', type: 'string'},
+	        {name: 'customerLocation', type: 'string'},
+	        {name: 'isNewOrder', type: 'boolean', defaultValue: true}
+	    ],
+	    hasMany: {model: 'OrderLine', name: 'orderlines'},
+	    proxy: {
+        type: 'ajax',
+        url : 'orders.json',
+        reader: {
+            type: 'json',
+            root: 'orders',
+            totalProperty: 'totalRecords',
+            successProperty: 'success'
+        },
+        timeout: 2000,
+		listeners: {
+		    exception:function (proxy, response, operation) {
+		        orderList.bindStore(offlineStore);
+		        offlineStore.load();
+		    }
+		}
+    	}
+	});
+	
+	onlineStore = new Ext.data.Store({
+	    model: 'Order'
+	});
+	
+	onlineStore.addListener('load', function (store, records) {
+	    offlineStore.proxy.clear();
+        offlineStore.add(records);
+	    offlineStore.sync();
+	    orderList.bindStore(offlineStore);
+	});
+	
+	offlineStore = new Ext.data.Store({
+	    model: 'Order',
+	    proxy: {
+	        type: 'localstorage',
+	        id: 'yapps-01'
+	    }	    
+	});
+	
+	orderList = new Ext.List({
+		title: 'Orders',
+	    itemTpl: '<tpl for="."><div>{orderNbr} <b>{description}</b></div></tpl>',
+	    onItemDisclosure: function(){
+	    	var orderTabPnl = Ext.getCmp('ordertab-pnl-id');
+	    	var orderLinesPnl = Ext.getCmp('orderlines-pnl-id');
+	    	if (Ext.isEmpty(orderLinesPnl))
+	    		orderLinesPnl = new Ext.List({
+	    		id: 'orderlines-pnl-id',
+				title: 'Order Lines',
+			    itemTpl: '<tpl for="."><div>{lineNo} - {product} <b>{orderedQty}</b></div></tpl>',
+			    store: new Ext.data.Store({
+				    model: 'OrderLine',
+				    data : arguments[0].data.orderlines
+				}),
+			    floating     : true,
+			    width        : 350,
+			    height       : 370,
+			    centered     : true,
+			    modal        : true,
+			    hideOnMaskTap: false
+			});
+	    	
+	    	orderTabPnl.add(1, orderLinesPnl);
+			orderTabPnl.setActiveItem(1);
+	    },
+	    store: onlineStore,
+	    floating     : true,
+	    width        : 350,
+	    height       : 370,
+	    centered     : true,
+	    modal        : true,
+	    hideOnMaskTap: false
+	});
+
+	var orderTab = new Ext.TabPanel({
+	id: 'ordertab-pnl-id',
+	title: 'List',
+    fullscreen: true,
+    ui        : 'light',
+    sortable  : true,
+    items: [orderList],
+    listeners: {
+    	cardswitch: function(tabPnl, newCard, oldCard, index, animated) {
+    		if (index === 0) {
+    			var orderLinesPnl = Ext.getCmp('orderlines-pnl-id');
+	    		if (!Ext.isEmpty(orderLinesPnl))
+	    			tabPnl.remove(orderLinesPnl);
+    		}
+    	}
+    }
+	});
+		
+	new Ext.TabPanel({
+	id: 'tab-pnl-id',
+    fullscreen: true,
+    ui        : 'light',
+    sortable  : true,
+    items: [orderTab,
+        {
+            title: 'Help',
+           	html: '<h1 style="font-size:16px;"><b>Help</b></h1><p>This application shows the orders and their line items.</p>',
+            cls  : 'tab2'
+        },
+        {
+            title: 'About',
+            html : '<h1 style="font-size:16px;"><b>About this app!</b></h1><p>Version 0.1</p>',
+            cls  : 'tab3'
+        }
+    ]
+	});
+	
+
+	onlineStore.load();
+
+    }
+});
