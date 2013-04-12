@@ -7,6 +7,5 @@ CACHE MANIFEST
 ../touch/resources/css/sencha-touch.css
 ../touch/sencha-touch-all-debug.js
 
-../ch04/ch04.css
 ch08.css
-ch08_03.js
+ch08_04.js
