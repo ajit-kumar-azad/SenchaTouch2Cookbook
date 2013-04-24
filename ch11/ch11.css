@@ -1,0 +1,57 @@
+#cube {
+	-webkit-transform-style: preserve-3d;
+	width: 200px;
+	height: 200px;
+	overflow: visible;
+	opacity: .3
+}
+
+#cube .x-innerhtml {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: visible
+}
+
+#cube .x-innerhtml>div {
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	position: absolute;
+	border: 1px solid #FFF
+}
+
+#cube .x-innerhtml>div:first-child {
+	-webkit-transform: rotateX(90deg) translateZ(100px);
+	background-color: red
+}
+
+#cube .x-innerhtml>div:nth-child(2) {
+	-webkit-transform: translateZ(100px);
+	background-color: green
+}
+
+#cube .x-innerhtml>div:nth-child(3) {
+	-webkit-transform: rotateY(90deg) translateZ(100px);
+	background-color: blue
+}
+
+#cube .x-innerhtml>div:nth-child(4) {
+	-webkit-transform: rotateY(180deg) translateZ(100px);
+	background-color: orange
+}
+
+#cube .x-innerhtml>div:nth-child(5) {
+	-webkit-transform: rotateY(-90deg) translateZ(100px);
+	background-color: cyan
+}
+
+#cube .x-innerhtml>div:nth-child(6) {
+	-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(100px)
+}
+
+  .thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
