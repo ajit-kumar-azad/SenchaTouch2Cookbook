@@ -115,7 +115,7 @@ Ext.application({
                     },{
                         text: 'Reset',
                         id: 'reset-button',
-                        ui: 'decline-round',
+                        ui: 'confirm',
                         handler: function() {
                         		Ext.getCmp('images-view').setActiveItem(0);
                             filter('');
