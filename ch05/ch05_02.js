@@ -57,7 +57,7 @@ Ext.application({
                     text: 'Save',
                     ui: 'confirm',
                     handler: function() {
-                    	Ext.Msg.alert("INFO", "In real implementation, this will be saved!");
+                    	Ext.Msg.alert("INFO", "In a real implementation, this will be saved!");
 //                    	var formValues = form.getValues();
 //                    	user.set(formValues); //updates the values and marks the instance dirty
 //                    	user.save();	//saves the data. this requires a proxy setup on the model
