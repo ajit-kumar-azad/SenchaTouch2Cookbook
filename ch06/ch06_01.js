@@ -13,7 +13,7 @@ Ext.application({
                 //iconMask: true,
                 html: '<span class="first-line">Normal</span><p></p><span class="second-line">This is a normal button with Html</span>',
 		        handler: function() {
-		        	Ext.Msg.alert('Info', 'You have clicked: ' + this.text);
+		        	Ext.Msg.alert('Info', 'You have clicked: ' + this.getText());
 		        }
 		    },
 		    {
