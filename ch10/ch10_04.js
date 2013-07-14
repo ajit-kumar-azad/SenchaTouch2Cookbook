@@ -1,42 +1,33 @@
 Ext.application({
 	name : 'MyApp',
+	requires : 'Ext.device.Notification',
 
-	launch: function() {
-    
-    var geo = Ext.create('Ext.util.GeoLocation', {
-	    autoUpdate: true,
-	    listeners: {
-	        locationupdate: function (geo) {
-	            var map = Ext.getCmp('google-map-id');
-	            map.setGeo(geo);
-	        },
-	        locationerror: function (   geo,
-	                                    bTimeout, 
-	                                    bPermissionDenied, 
-	                                    bLocationUnavailable, 
-	                                    message) {
-	            if(bTimeout){
-	                alert('Timeout occurred.');
-	            }
-	            if (bPermissionDenied){
-	                alert('Permission denied.');
-	            }
-	            if (bLocationUnavailable) {
-	            	alert('Location unavailable.');
-	            }
-	        }
-	    }
-	});
-	
-    Ext.Viewport.add({
-            xtype: 'map',
-            id: 'google-map-id',
-            geo: geo,
-            mapOptions: {
-	            	mapTypeId: google.maps.MapTypeId.TERRAIN,
-	            	zoom: 10
-            }
-      });
-
-	}							
+	launch : function() {
+		
+		Ext.device.Notification.show({
+			title : 'Verification',
+			message : 'Are you a human?',
+			buttons : [Ext.MessageBox.YES, Ext.MessageBox.CANCEL],
+			callback : function(button) {
+				if (button === "yes") {
+					alert('Verified');
+				} else {
+					alert('Nope');
+				}
+			}
+		});
+		
+		Ext.device.Notification.vibrate();
+		
+//		document.addEventListener("deviceready", function() {
+//			navigator.notification.confirm(
+//					'Are you a human?',
+//		            function(btnIdx) {
+//						alert(btnIdx);
+//					},
+//		            'Verification',
+//		            "Yes,Cancel"
+//		        );
+//		}, false);
+	}
 });
